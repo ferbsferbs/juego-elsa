@@ -374,7 +374,17 @@
             this.horizon = new Horizon(this.canvas, this.spriteDef, this.dimensions,
                 this.config.GAP_COEFFICIENT);
 
+                let floor = document.getElementById('floor');
+            let height= (window.innerHeight/window.innerWidth) *70 +"%";
+            floor.style.height=  height
+
+            let sky = document.getElementById('sky');
+            let height1= 100 - ((window.innerHeight/window.innerWidth) *50 ) + "%";
+            sky.style.height=  height1
+
+            
             // Distance meter
+
             this.distanceMeter = new DistanceMeter(this.canvas,
                 this.spriteDef.TEXT_SPRITE, this.dimensions.WIDTH);
 
