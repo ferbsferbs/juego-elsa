@@ -375,7 +375,7 @@
                 this.config.GAP_COEFFICIENT);
 
                 let floor = document.getElementById('floor');
-            let height= (window.innerHeight/window.innerWidth) *70 +"%";
+            let height= innerWidth<800?((window.innerWidth*70) /window.innerWidth )+"%":((window.innerHeight*70) /window.innerWidth );
             floor.style.height=  height
 
             let sky = document.getElementById('sky');
