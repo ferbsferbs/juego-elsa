@@ -902,7 +902,7 @@
 
                 var box = document.getElementById("floor");
      
-    box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/19.5) + (cssScale==1?(-1):(+30))+"px"
+    box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/19.5) + (cssScale==1?(-1):(+10))+"px"
 
             console.log(document.getElementsByClassName("runner-container")[0].offsetTop+translateY)
 
