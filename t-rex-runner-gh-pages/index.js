@@ -249,7 +249,7 @@
             this.containerEl.className = Runner.classes.SNACKBAR;
             this.containerEl.textContent = loadTimeData.getValue('disabledEasterEgg');
             this.outerContainerEl.appendChild(this.containerEl);
-
+            
             // Show notification when the activation key is pressed.
             document.addEventListener(Runner.events.KEYDOWN, function (e) {
                 if (Runner.keycodes.JUMP[e.keyCode]) {
@@ -883,6 +883,29 @@
             const cssScale = scale;
             this.containerEl.style.transform =
                 'scale(' + cssScale + ') translateY(' + translateY + 'px)';
+
+                function gcd (a, b) {
+                    return (b == 0) ? a : gcd (b, a%b);
+                }
+                var w = window.innerWidth;
+                var h = windowHeight;
+                var r = gcd (w, h);
+                console.log("RESOLUTION",r)
+                console.log("Aspect     = ", w/r, ":", h/r);
+
+              
+                function getOffset(el) {
+                const rect = el.getBoundingClientRect();
+                return rect
+                }
+
+
+                var box = document.getElementById("floor");
+     
+    box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/19.5) + (cssScale==1?(-1):(+30))+"px"
+
+            console.log(document.getElementsByClassName("runner-container")[0].offsetTop+translateY)
+
         },
         
         /**

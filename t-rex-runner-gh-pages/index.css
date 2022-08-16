@@ -71,6 +71,9 @@ html, body {
 }
 
 @media (max-width: 420px) {
+  .green_florr{
+    display: none;
+  }
   .suggested-left > #control-buttons, .suggested-right > #control-buttons {
     float: none;
   }
@@ -81,6 +84,14 @@ html, body {
     border-radius: 0;
   }
 }
+
+#mobileshow { 
+  display:none; 
+  }
+  @media screen and (max-width: 700px) {
+  #mobileshow { 
+  display:block; }
+  }
 
 @media (max-height: 350px) {
   h1 {
@@ -162,4 +173,5 @@ html, body {
   transform-origin: top center;
   transition: transform 250ms cubic-bezier(0.4, 0, 1, 1) 400ms;
   z-index: 2;
+
 }
