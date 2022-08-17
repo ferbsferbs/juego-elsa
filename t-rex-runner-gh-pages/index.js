@@ -1424,8 +1424,8 @@
                 this.canvasCtx.drawImage(Runner.imageSprite,
                     sourceX, this.spritePos.y,
                     sourceWidth * this.size, sourceHeight,
-                    this.xPos, this.yPos,
-                    this.typeConfig.width * this.size, this.typeConfig.height);
+                   ( this.xPos-(this.typeConfig.width * this.size *0.5)),( this.yPos-(this.typeConfig.height*0.5 )),
+                    this.typeConfig.width * this.size*1.5, this.typeConfig.height*1.5);
             },
 
             /**
@@ -1489,8 +1489,8 @@
 
                 for (var i = collisionBoxes.length - 1; i >= 0; i--) {
                     this.collisionBoxes[i] = new CollisionBox(collisionBoxes[i].x,
-                        collisionBoxes[i].y, collisionBoxes[i].width,
-                        collisionBoxes[i].height);
+                        collisionBoxes[i].y, collisionBoxes[i].width*1.5,
+                        collisionBoxes[i].height*1.5);
                 }
             }
         };
