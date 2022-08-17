@@ -901,8 +901,10 @@
 
 
                 var box = document.getElementById("floor");
+
+                let ratio =translateY/cssScale
      
-    box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/19.5) + (cssScale==1?(-1):(+10))+"px"
+    box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/(w>600?(80-ratio):(19.5))) + (cssScale==1?(-1):(+10))+"px"
 
             console.log(document.getElementsByClassName("runner-container")[0].offsetTop+translateY)
 
