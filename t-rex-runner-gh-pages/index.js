@@ -1424,12 +1424,18 @@
 
                 const getSizeMultiplierFromType =(type)=>{
                     if(type=="PTERODACTYL"){return 0.8}
+                    if(type=="CACTUS_LARGE"){return 1.8}
                     else return 1.5
+                }
+                const getPositionMultiplierFromType =(type)=>{
+                    if(type=="PTERODACTYL"){return .4}
+                    if(type=="CACTUS_LARGE"){return .8}
+                    else return .5
                 }
                 this.canvasCtx.drawImage(Runner.imageSprite,
                     sourceX, this.spritePos.y,
                     sourceWidth * this.size, sourceHeight,
-                   ( this.xPos-(this.typeConfig.width * this.size *0.5)),( this.yPos-(this.typeConfig.height*0.5 )),
+                   ( this.xPos-(this.typeConfig.width * this.size *getPositionMultiplierFromType(this.typeConfig.type))),( this.yPos-(this.typeConfig.height*getPositionMultiplierFromType(this.typeConfig.type) )),
                     this.typeConfig.width * this.size*getSizeMultiplierFromType(this.typeConfig.type), this.typeConfig.height*getSizeMultiplierFromType(this.typeConfig.type));
 
                     console.log(this.typeConfig.type)
@@ -1543,8 +1549,8 @@
             type: 'PTERODACTYL',
             width: 46,
             height: 40,
-            yPos: [100, 75, 50], // Variable height.
-            yPosMobile: [100, 50], // Variable height mobile.
+            yPos: [100, 70, 50], // Variable height.
+            yPosMobile: [80, 30], // Variable height mobile.
             multipleSpeed: 999,
             minSpeed: 0,
             minGap: 100,//colision divided by 2 as required from client
