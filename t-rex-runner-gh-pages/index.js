@@ -1563,7 +1563,7 @@
             ],
             numFrames: 2,
             frameRate: 1000 / 6,
-            speedOffset: 1
+            speedOffset: 1.5
         }
     ];
 
