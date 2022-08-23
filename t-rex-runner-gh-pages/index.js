@@ -103,7 +103,7 @@
      * @enum {number}
      */
     Runner.config = {
-        ACCELERATION: 0.001,
+        ACCELERATION: 0.00005,
         BG_CLOUD_SPEED: 0.2,
         BOTTOM_PAD: 10,
         CLEAR_TIME: 3000,
@@ -119,10 +119,10 @@
         MAX_OBSTACLE_LENGTH: 3,
         MAX_OBSTACLE_DUPLICATION: 2,
         MAX_SPEED: 13,
-        MIN_JUMP_HEIGHT: 35,
-        MOBILE_SPEED_COEFFICIENT: 1.2,
+        MIN_JUMP_HEIGHT: 40,
+        MOBILE_SPEED_COEFFICIENT: 1,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
-        SPEED: 6,
+        SPEED: 5,
         SPEED_DROP_COEFFICIENT: 3,
         ARCADE_MODE_INITIAL_TOP_POSITION: 35,
         ARCADE_MODE_TOP_POSITION_PERCENT: 0.1
@@ -903,8 +903,9 @@
                 var box = document.getElementById("floor");
 
                 let ratio =translateY/cssScale
-     
-    box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/(w>600?(80-ratio):(19.5))) + (cssScale==1?(-1):(+10))+"px"
+               
+   box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/(w>600?cssScale>2.6?(80-ratio):cssScale>2.5?(70-ratio):translateY>70?(75-ratio):(60-ratio):(19.5))) + (cssScale==1?(-1):(+10))+"px"
+   // box.style.top=translateY +scaledCanvasHeight+(window.innerWidth/(w>600?(Math.abs(((translateY*20/windowHeight)-translateY))-ratio):(19.5))) + (cssScale==1?(-1):(+10))+"px"
 
             console.log(document.getElementsByClassName("runner-container")[0].offsetTop+translateY)
 
@@ -1421,11 +1422,17 @@
                     sourceX += sourceWidth * this.currentFrame;
                 }
 
+                const getSizeMultiplierFromType =(type)=>{
+                    if(type=="PTERODACTYL"){return 0.8}
+                    else return 1.5
+                }
                 this.canvasCtx.drawImage(Runner.imageSprite,
                     sourceX, this.spritePos.y,
                     sourceWidth * this.size, sourceHeight,
                    ( this.xPos-(this.typeConfig.width * this.size *0.5)),( this.yPos-(this.typeConfig.height*0.5 )),
-                    this.typeConfig.width * this.size*1.5, this.typeConfig.height*1.5);
+                    this.typeConfig.width * this.size*getSizeMultiplierFromType(this.typeConfig.type), this.typeConfig.height*getSizeMultiplierFromType(this.typeConfig.type));
+
+                    console.log(this.typeConfig.type)
             },
 
             /**
@@ -1539,18 +1546,18 @@
             yPos: [100, 75, 50], // Variable height.
             yPosMobile: [100, 50], // Variable height mobile.
             multipleSpeed: 999,
-            minSpeed: 8.5,
-            minGap: 150,
+            minSpeed: 0,
+            minGap: 100,//colision divided by 2 as required from client
             collisionBoxes: [
-                new CollisionBox(15, 15, 16, 5),
-                new CollisionBox(18, 21, 24, 6),
-                new CollisionBox(2, 14, 4, 3),
-                new CollisionBox(6, 10, 4, 7),
-                new CollisionBox(10, 8, 6, 9)
+                new CollisionBox(0.5*15, 0.5*15, 0.5*16, 0.5*5),
+                new CollisionBox(0.5*18, 0.5*21, 0.5*24, 0.5*6),
+                new CollisionBox(0.5*2, 0.5*14, 0.5*4, 0.5*3),
+                new CollisionBox(0.5*6, 0.5*10, 0.5*4, 0.5*7),
+                new CollisionBox(0.5*10, 0.5*8, 0.5*6, 0.5*9)
             ],
             numFrames: 2,
             frameRate: 1000 / 6,
-            speedOffset: .8
+            speedOffset: 1
         }
     ];
 
@@ -1778,8 +1785,8 @@
             if (this.ducking && this.status != Trex.status.CRASHED) {
                 this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
                     sourceWidth, sourceHeight,
-                    this.xPos, this.yPos,
-                    this.config.WIDTH_DUCK, this.config.HEIGHT);
+                    this.xPos-( this.config.WIDTH_DUCK*.2), this.yPos-( this.config.WIDTH_DUCK*.2),
+                    this.config.WIDTH_DUCK*1.2, this.config.HEIGHT*1.2);
             } else {
                 // Crashed whilst ducking. Trex is standing up so needs adjustment.
                 if (this.ducking && this.status == Trex.status.CRASHED) {
@@ -1788,8 +1795,8 @@
                 // Standing / running
                 this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
                     sourceWidth, sourceHeight,
-                    this.xPos, this.yPos,
-                    this.config.WIDTH, this.config.HEIGHT);
+                    this.xPos-( this.config.WIDTH_DUCK*.2), this.yPos-( this.config.WIDTH_DUCK*.2),
+                    this.config.WIDTH*1.2, this.config.HEIGHT*1.2);
             }
         },
 
