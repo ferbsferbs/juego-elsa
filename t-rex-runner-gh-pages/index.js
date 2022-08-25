@@ -1546,8 +1546,8 @@
             type: 'PTERODACTYL',
             width: 46,
             height: 40,
-            yPos: [100, 70, 50], // Variable height.
-            yPosMobile: [100], // Variable height mobile.
+            yPos: [ 70, 50], // Variable height.
+            yPosMobile: [ 5], // Variable height mobile.
             multipleSpeed: 999,
             minSpeed: 0,
             minGap: 100,//colision divided by 2 as required from client
