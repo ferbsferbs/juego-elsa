@@ -1,7 +1,4 @@
-// Copyright (c) 2014 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-// extract from chromium source code by @liuwayong
+
 (function () {
     'use strict';
     /**
@@ -1550,7 +1547,7 @@
             width: 46,
             height: 40,
             yPos: [100, 70, 50], // Variable height.
-            yPosMobile: [100, 5], // Variable height mobile.
+            yPosMobile: [100], // Variable height mobile.
             multipleSpeed: 999,
             minSpeed: 0,
             minGap: 100,//colision divided by 2 as required from client
