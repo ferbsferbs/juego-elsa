@@ -1547,7 +1547,7 @@
             width: 46,
             height: 40,
             yPos: [ 70, 50], // Variable height.
-            yPosMobile: [ 5], // Variable height mobile.
+            yPosMobile: [ 10,15], // Variable height mobile.
             multipleSpeed: 999,
             minSpeed: 0,
             minGap: 100,//colision divided by 2 as required from client
